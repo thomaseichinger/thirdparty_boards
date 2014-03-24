@@ -4,6 +4,9 @@ MODULE =$(BOARD)_base
 
 all: $(BINDIR)$(MODULE).a
 	$(MAKE) -C drivers
+ifneq (,$(findstring openwsn,$(USEMODULE)))
+	$(MAKE) -C openwsn
+endif
 
 $(BINDIR)$(MODULE): $(OBJ)
 	$(AR) rcs $(BINDIR)iot-lab_M3_base.a $(OBJ)
